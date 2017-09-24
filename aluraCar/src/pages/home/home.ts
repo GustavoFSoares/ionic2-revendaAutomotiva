@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { Http } from "@angular/http";
-// import { EscolhaPage } from "../escolha/escolha";
+import { EscolhaPage } from "../escolha/escolha";
+import { Carro } from "../../domain/carro/carro";
 
 @Component({
     selector: 'page-home',
@@ -9,7 +10,7 @@ import { Http } from "@angular/http";
 })
 export class HomePage implements OnInit{
     
-    public carros;
+    public carros: Carro[];
 
     constructor(public navCtrl: NavController, private _http: Http,
         private _loadingCtrl: LoadingController, private _alertCtrl: AlertController) { }
@@ -37,11 +38,7 @@ export class HomePage implements OnInit{
     }
 
     selecionar(carro){
-        // this.navCtrl.push(EscolhaPage);
-        console.log('123');
-        
-        console.log(carro);
-                
+        this.navCtrl.push(EscolhaPage, { carroSelecionado: carro });                
     }
 
 }
