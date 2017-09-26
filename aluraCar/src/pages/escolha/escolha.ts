@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
-import { NavParams } from "ionic-angular";
+import { NavParams, NavController } from "ionic-angular";
 import { Carro } from "../../domain/carro/carro";
 import { Acessorio } from "../../domain/carro/acessorio";
+import { CadastroPage } from "../cadastro/cadastro";
 
 @Component({
     selector: "escolha",
@@ -13,7 +14,7 @@ export class EscolhaPage {
     public acessorios: Acessorio[];
     private _precoTotal: number;
 
-    constructor(public navParams: NavParams){
+    constructor(public navParams: NavParams, public navCtrl: NavController){
         
         this.carro = navParams.get('carroSelecionado');
         this._precoTotal = this.carro.preco;
@@ -32,5 +33,11 @@ export class EscolhaPage {
         ligado ?
             this._precoTotal += acessorio.preco :
             this._precoTotal -= acessorio.preco
+    }
+
+    avancaNoAgendamento(){
+        console.log(this._precoTotal);
+        
+        this.navCtrl.push(CadastroPage, { carro: this.carro, precoTotal: this._precoTotal });
     }
  }
