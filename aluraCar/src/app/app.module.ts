@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { EscolhaPage } from '../pages/escolha/escolha';
 import { CadastroPage } from '../pages/cadastro/cadastro';
+import { AgendamentosPage } from '../pages/agendamentos/agendamentos';
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 import { AgendamentoService } from "../domain/agendamento/agendamento-service";
@@ -19,10 +20,10 @@ return new Storage(['indexeddb'],{
 }
 
 @NgModule({
-    declarations: [ MyApp, HomePage, EscolhaPage, CadastroPage ],
+    declarations: [MyApp, HomePage, EscolhaPage, CadastroPage, AgendamentosPage ],
     imports: [ IonicModule.forRoot(MyApp) ],
     bootstrap: [ IonicApp ],
-    entryComponents: [MyApp, HomePage, EscolhaPage, CadastroPage ],
+    entryComponents: [MyApp, HomePage, EscolhaPage, CadastroPage, AgendamentosPage ],
     providers: [
         { provide: ErrorHandler, useClass: IonicErrorHandler }, AgendamentoService,
         { provide: Storage, useFactory: provideStorage } , AgendamentoDao

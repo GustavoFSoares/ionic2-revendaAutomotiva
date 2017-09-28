@@ -47,6 +47,10 @@ export class CadastroPage {
                     this._alert.setSubTitle("Agendamento realizado com Sucesso!") :
                     this._alert.setSubTitle("Não foi possível realizar o agendamento");
                 this._alert.present();
+            }).catch( err => {
+                console.log(err);
+                this._alert.setSubTitle(err.message);
+                this._alert.present();
             });
     }
 }
